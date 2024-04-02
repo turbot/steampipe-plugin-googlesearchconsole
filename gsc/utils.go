@@ -87,7 +87,7 @@ func processPageIndexingStatusBatch(ctx context.Context, d *plugin.QueryData, si
 	batchWG.Wait()
 	wg.Done()
 
-	plugin.Logger(ctx).Error("📦 Batch %d complete\n", batchIndex+1)
+	plugin.Logger(ctx).Info("Batch %d complete\n", batchIndex+1)
 }
 
 // processPagespeedAnalysisBatch processes a batch of URLs concurrently.
@@ -115,5 +115,5 @@ func processPagespeedAnalysisBatch(ctx context.Context, d *plugin.QueryData, str
 	batchWG.Wait()
 	wg.Done()
 
-	plugin.Logger(ctx).Error("📦 Batch %d complete\n", batchIndex+1)
+	plugin.Logger(ctx).Info("Batch %d complete\n", batchIndex+1)
 }

@@ -30,6 +30,7 @@ func getSearchConsoleSessionConfig(ctx context.Context, d *plugin.QueryData) ([]
 	if credentialContent != "" {
 		ts, err := getSearchConsoleTokenSource(ctx, d)
 		if err != nil {
+			plugin.Logger(ctx).Error("getSearchConsoleSessionConfig", "connection_error", err)
 			return nil, err
 		}
 		opts = append(opts, option.WithTokenSource(ts))
@@ -51,12 +52,14 @@ func getSearchConsoleTokenSource(ctx context.Context, d *plugin.QueryData) (oaut
 
 	credentialContent, err := pathOrContents(*gscConfig.Credentials)
 	if err != nil {
+		plugin.Logger(ctx).Error("getSearchConsoleTokenSource", "Error reading credentials", err)
 		return nil, err
 	}
 
 	config, err := google.JWTConfigFromJSON([]byte(credentialContent), searchconsole.WebmastersReadonlyScope)
 	if err != nil {
-		plugin.Logger(ctx).Error("getTokenSource", "Unable to parse service account key file to config: %v", err)
+		plugin.Logger(ctx).Error("getSearchConsoleTokenSource", "Unable to parse service account key file to config: %v", err)
+		return nil, err
 	}
 
 	ts := config.TokenSource(ctx)
@@ -80,6 +83,7 @@ func getPagespeedSessionConfig(ctx context.Context, d *plugin.QueryData) ([]opti
 	if credentialContent != "" {
 		ts, err := getPagespeedTokenSource(ctx, d)
 		if err != nil {
+			plugin.Logger(ctx).Error("getPagespeedSessionConfig", "connection_error", err)
 			return nil, err
 		}
 		opts = append(opts, option.WithTokenSource(ts))
@@ -101,12 +105,14 @@ func getPagespeedTokenSource(ctx context.Context, d *plugin.QueryData) (oauth2.T
 
 	credentialContent, err := pathOrContents(*gscConfig.Credentials)
 	if err != nil {
+		plugin.Logger(ctx).Error("getPagespeedTokenSource", "Error reading credentials", err)
 		return nil, err
 	}
 
 	config, err := google.JWTConfigFromJSON([]byte(credentialContent), pagespeedonline.OpenIDScope)
 	if err != nil {
-		plugin.Logger(ctx).Error("getTokenSource", "Unable to parse service account key file to config: %v", err)
+		plugin.Logger(ctx).Error("getPagespeedTokenSource", "Unable to parse service account key file to config: %v", err)
+		return nil, err
 	}
 
 	ts := config.TokenSource(ctx)
@@ -119,13 +125,14 @@ func getPageIndexingStatusService(ctx context.Context, d *plugin.QueryData, page
 	// Create client
 	opts, err := getSearchConsoleSessionConfig(ctx, d)
 	if err != nil {
+		plugin.Logger(ctx).Error("getPageIndexingStatusService", "connection_error", err)
 		return nil, err
 	}
 
 	// Create service
 	svc, err := searchconsole.NewService(ctx, opts...)
 	if err != nil {
-		plugin.Logger(ctx).Error("listGSCSites", "connection_error", err)
+		plugin.Logger(ctx).Error("getPageIndexingStatusService", "service_creation_error", err)
 		return nil, err
 	}
 
@@ -135,6 +142,7 @@ func getPageIndexingStatusService(ctx context.Context, d *plugin.QueryData, page
 	}
 	resp, err := svc.UrlInspection.Index.Inspect(&req).Context(ctx).Do()
 	if err != nil {
+		plugin.Logger(ctx).Error("getPageIndexingStatusService", "api_error", err)
 		return nil, err
 	}
 	return resp.InspectionResult, nil
@@ -145,18 +153,20 @@ func getPagespeedAnalysisService(ctx context.Context, d *plugin.QueryData, pageU
 	// Create client
 	opts, err := getPagespeedSessionConfig(ctx, d)
 	if err != nil {
+		plugin.Logger(ctx).Error("getPagespeedAnalysisService", "connection_error", err)
 		return nil, err
 	}
 
 	// Create service
 	svc, err := pagespeedonline.NewService(ctx, opts...)
 	if err != nil {
-		plugin.Logger(ctx).Error("listGSCSites", "connection_error", err)
+		plugin.Logger(ctx).Error("getPagespeedAnalysisService", "service_creation_error", err)
 		return nil, err
 	}
 
 	resp, err := svc.Pagespeedapi.Runpagespeed(pageURL).Strategy(strings.ToUpper(strategy)).Fields("id,loadingExperience,analysisUTCTimestamp").Context(ctx).Do()
 	if err != nil {
+		plugin.Logger(ctx).Error("getPagespeedAnalysisService", "api_error", err)
 		return nil, err
 	}
 	return resp, nil
