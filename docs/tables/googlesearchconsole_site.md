@@ -13,7 +13,7 @@ from
   googlesearchconsole_site;
 ```
 
-### List sites a user is Owner of
+### List the sites a user owns
 
 ```sql
 select
