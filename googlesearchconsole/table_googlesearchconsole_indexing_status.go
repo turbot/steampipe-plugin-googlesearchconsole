@@ -1,4 +1,4 @@
-package gsc
+package googlesearchconsole
 
 import (
 	"context"
@@ -15,7 +15,7 @@ import (
 
 func tableGSCIndexingStatus(_ context.Context) *plugin.Table {
 	return &plugin.Table{
-		Name:        "gsc_indexing_status",
+		Name:        "googlesearchconsole_indexing_status",
 		Description: "Lists the indexing status of the URLs in the sitemap.",
 		List: &plugin.ListConfig{
 			KeyColumns: plugin.AllColumns([]string{"site_url", "sitemap_url"}),
@@ -134,7 +134,7 @@ func listIndexingStatus(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydr
 
 	sitemapURLs, err := sitemapper.Get(smUrl, nil)
 	if err != nil {
-		plugin.Logger(ctx).Error("gsc_indexing_status.listIndexingStatus", "sitemap_error", err)
+		plugin.Logger(ctx).Error("googlesearchconsole_indexing_status.listIndexingStatus", "sitemap_error", err)
 		return nil, err
 	}
 
@@ -178,7 +178,7 @@ func getIndexingStatus(ctx context.Context, d *plugin.QueryData, h *plugin.Hydra
 
 	resp, err := getPageIndexingStatusService(ctx, d, pageUrl, siteUrl)
 	if err != nil {
-		plugin.Logger(ctx).Error("gsc_indexing_status.getIndexingStatus", "api_error", err)
+		plugin.Logger(ctx).Error("googlesearchconsole_indexing_status.getIndexingStatus", "api_error", err)
 		return nil, err
 	}
 

@@ -1,4 +1,4 @@
-# Table: gsc_sitemap
+# Table: googlesearchconsole_sitemap
 
 Lists the sitemaps-entries submitted for all sites.
 
@@ -13,7 +13,7 @@ select
   type,
   c ->> 'submitted' as total_urls
 from
-  gsc_sitemap,
+  googlesearchconsole_sitemap,
   jsonb_array_elements(contents) as c;
 ```
 
@@ -26,7 +26,7 @@ select
   type,
   c ->> 'submitted' as total_urls
 from
-  gsc_sitemap,
+  googlesearchconsole_sitemap,
   jsonb_array_elements(contents) as c
 where
   site_url = 'https://www.example.com/';
@@ -41,7 +41,7 @@ select
   type,
   c ->> 'submitted' as total_urls
 from
-  gsc_sitemap,
+  googlesearchconsole_sitemap,
   jsonb_array_elements(contents) as c
 where
   site_url = 'sc-domain:example.com';
@@ -57,7 +57,7 @@ select
   c ->> 'submitted' as total_urls,
   errors as error_count
 from
-  gsc_sitemap,
+  googlesearchconsole_sitemap,
   jsonb_array_elements(contents) as c
 where
   errors > 0;
@@ -70,7 +70,7 @@ select
   site_url,
   path
 from
-  gsc_sitemap
+  googlesearchconsole_sitemap
 where
   is_sitemaps_index;
 ```

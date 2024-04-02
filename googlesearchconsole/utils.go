@@ -1,4 +1,4 @@
-package gsc
+package googlesearchconsole
 
 import (
 	"context"

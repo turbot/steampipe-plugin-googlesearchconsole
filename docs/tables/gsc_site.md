@@ -1,4 +1,4 @@
-# Table: gsc_site
+# Table: googlesearchconsole_site
 
 Lists the user's Search Console properties, contains permission level information about a Search Console site
 
@@ -10,7 +10,7 @@ Lists the user's Search Console properties, contains permission level informatio
 select
   *
 from
-  gsc_site;
+  googlesearchconsole_site;
 ```
 
 ### List sites a user is Owner of
@@ -19,7 +19,7 @@ from
 select
   *
 from
-  gsc_site
+  googlesearchconsole_site
 where
   permission_level = 'siteOwner';
 ```
@@ -30,7 +30,7 @@ where
 select
   site_url
 from
-  gsc_site
+  googlesearchconsole_site
 where
   site_url = 'https://www.example.com/';
 ```
@@ -41,7 +41,7 @@ where
 select
   site_url
 from
-  gsc_site
+  googlesearchconsole_site
 where
   site_url = 'sc-domain:example.com';
 ```

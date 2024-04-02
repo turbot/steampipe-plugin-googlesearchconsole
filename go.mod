@@ -1,4 +1,4 @@
-module github.com/turbot/steampipe-plugin-gsc
+module github.com/turbot/steampipe-plugin-googlesearchconsole
 
 go 1.21
 

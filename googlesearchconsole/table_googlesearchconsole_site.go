@@ -1,4 +1,4 @@
-package gsc
+package googlesearchconsole
 
 import (
 	"context"
@@ -13,7 +13,7 @@ import (
 
 func tableGSCSite(_ context.Context) *plugin.Table {
 	return &plugin.Table{
-		Name:        "gsc_site",
+		Name:        "googlesearchconsole_site",
 		Description: "Lists the user's Search Console sites.",
 		List: &plugin.ListConfig{
 			Hydrate: listSites,
@@ -44,14 +44,14 @@ func listSites(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) 
 	// Create client
 	opts, err := getSearchConsoleSessionConfig(ctx, d)
 	if err != nil {
-		plugin.Logger(ctx).Error("gsc_site.listSites", "connection_error", err)
+		plugin.Logger(ctx).Error("googlesearchconsole_site.listSites", "connection_error", err)
 		return nil, err
 	}
 
 	// Create service
 	svc, err := searchconsole.NewService(ctx, opts...)
 	if err != nil {
-		plugin.Logger(ctx).Error("gsc_site.listSites", "service_creation_error", err)
+		plugin.Logger(ctx).Error("googlesearchconsole_site.listSites", "service_creation_error", err)
 		return nil, err
 	}
 
@@ -59,7 +59,7 @@ func listSites(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) 
 
 	resp, err := req.Context(ctx).Do()
 	if err != nil {
-		plugin.Logger(ctx).Error("gsc_site.listSites", "api_error", err)
+		plugin.Logger(ctx).Error("googlesearchconsole_site.listSites", "api_error", err)
 		return nil, err
 	}
 
@@ -80,14 +80,14 @@ func getSite(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (i
 	// Create client
 	opts, err := getSearchConsoleSessionConfig(ctx, d)
 	if err != nil {
-		plugin.Logger(ctx).Error("gsc_site.getSite", "connection_error", err)
+		plugin.Logger(ctx).Error("googlesearchconsole_site.getSite", "connection_error", err)
 		return nil, err
 	}
 
 	// Create service
 	svc, err := searchconsole.NewService(ctx, opts...)
 	if err != nil {
-		plugin.Logger(ctx).Error("gsc_site.getSite", "service_creation_error", err)
+		plugin.Logger(ctx).Error("googlesearchconsole_site.getSite", "service_creation_error", err)
 		return nil, err
 	}
 
@@ -95,7 +95,7 @@ func getSite(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (i
 
 	resp, err := req.Context(ctx).Do()
 	if err != nil {
-		plugin.Logger(ctx).Error("gsc_site.getSite", "api_error", err)
+		plugin.Logger(ctx).Error("googlesearchconsole_site.getSite", "api_error", err)
 		return nil, err
 	}
 

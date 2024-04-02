@@ -1,13 +1,13 @@
 ---
 organization: Turbot
 category: ["saas"]
-icon_url: "/images/plugins/turbot/gsc.svg"
-brand_color: "#1EA362"
+icon_url: "/images/plugins/turbot/googlesearchconsole.svg"
+brand_color: "#ea4335"
 display_name: "Google Search Console"
-short_name: "gsc"
+short_name: "googlesearchconsole"
 description: "Steampipe plugin for query data from Google Search Console (GSC)."
 og_description: "Query Google Search Console (GSC) with SQL! Open source CLI. No DB required."
-og_image: "/images/plugins/turbot/gsc-social-graphic.png"
+og_image: "/images/plugins/turbot/googlesearchconsole-social-graphic.png"
 engines: ["steampipe", "sqlite", "postgres", "export"]
 ---
 
@@ -24,7 +24,7 @@ select
   site_url,
   permission_level
 from
-  gsc_site;
+  googlesearchconsole_site;
 ```
 
 ```
@@ -38,7 +38,7 @@ from
 
 ## Documentation
 
-- **[Table definitions & examples →](/plugins/turbot/gsc/tables)**
+- **[Table definitions & examples →](/plugins/turbot/googlesearchconsole/tables)**
 
 ## Get started
 
@@ -47,7 +47,7 @@ from
 Download and install the latest Google Search Console plugin:
 
 ```shell
-steampipe plugin install gsc
+steampipe plugin install googlesearchconsole
 ```
 
 ### Credentials
@@ -61,11 +61,11 @@ steampipe plugin install gsc
 
 ### Configuration
 
-Installing the latest gsc plugin will create a config file (`~/.steampipe/config/gsc.spc`) with a single connection named `gsc`:
+Installing the latest googlesearchconsole plugin will create a config file (`~/.steampipe/config/googlesearchconsole.spc`) with a single connection named `googlesearchconsole`:
 
 ```hcl
-connection "gsc" {
-  plugin = "gsc"
+connection "googlesearchconsole" {
+  plugin = "googlesearchconsole"
 
   # You should have a project on Google Cloud with the Indexing API enabled, a service account with the `Owner` permission on your sites.
   # The path to the Google Cloud credentials file of your sevice account.

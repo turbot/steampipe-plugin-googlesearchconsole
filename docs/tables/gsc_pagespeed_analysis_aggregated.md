@@ -1,4 +1,4 @@
-# Table: gsc_pagespeed_analysis_aggregated
+# Table: googlesearchconsole_pagespeed_analysis_aggregated
 
 Runs PageSpeed analysis on the site, and returns aggregated PageSpeed scores.
 
@@ -21,7 +21,7 @@ select
   fid,
   inp
 from
-  gsc_pagespeed_analysis_aggregated
+  googlesearchconsole_pagespeed_analysis_aggregated
 where
   site_url = 'https://example.io/';
 ```
@@ -35,7 +35,7 @@ select
   cls_percentile,
   cls_bucket_range
 from
-  gsc_pagespeed_analysis_aggregated
+  googlesearchconsole_pagespeed_analysis_aggregated
 where
   site_url = 'https://example.io/';
 ```
@@ -49,7 +49,7 @@ select
   cls_percentile,
   cls_bucket_range
 from
-  gsc_pagespeed_analysis_aggregated
+  googlesearchconsole_pagespeed_analysis_aggregated
 where
   site_url = 'https://example.io/'
   and strategy = 'MOBILE';
@@ -64,7 +64,7 @@ select
   fcp_percentile,
   fcp_bucket_range
 from
-  gsc_pagespeed_analysis_aggregated
+  googlesearchconsole_pagespeed_analysis_aggregated
 where
   site_url = 'https://example.io/';
 ```
@@ -78,7 +78,7 @@ select
   fid_percentile,
   fid_bucket_range
 from
-  gsc_pagespeed_analysis_aggregated
+  googlesearchconsole_pagespeed_analysis_aggregated
 where
   lsite_urloc = 'https://example.io/';
 ```

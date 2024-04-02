@@ -1,4 +1,4 @@
-package gsc
+package googlesearchconsole
 
 import (
 	"context"
@@ -16,7 +16,7 @@ import (
 
 func tableGSCPagespeedAnalysis(_ context.Context) *plugin.Table {
 	return &plugin.Table{
-		Name:        "gsc_pagespeed_analysis",
+		Name:        "googlesearchconsole_pagespeed_analysis",
 		Description: "Lists the pagespeed analysis for the URLs in the sitemap.",
 		List: &plugin.ListConfig{
 			KeyColumns: []*plugin.KeyColumn{
@@ -209,12 +209,12 @@ func listPagespeedAnalysis(ctx context.Context, d *plugin.QueryData, h *plugin.H
 	strategy := d.EqualsQualString("strategy")
 
 	if smUrl == "" {
-		plugin.Logger(ctx).Error("gsc_pagespeed_analysis.listPagespeedAnalysis", "validation_error", "The sitemap_url must be specified.")
+		plugin.Logger(ctx).Error("googlesearchconsole_pagespeed_analysis.listPagespeedAnalysis", "validation_error", "The sitemap_url must be specified.")
 		return nil, nil
 	}
 	if strategy != "" {
 		if strings.ToLower(strategy) != "mobile" && strings.ToLower(strategy) != "desktop" {
-			plugin.Logger(ctx).Error("lgsc_pagespeed_analysis.istPagespeedAnalysis", "validation_error", "Invalid strategy. The strategy should be either 'mobile' or 'desktop'.")
+			plugin.Logger(ctx).Error("lgooglesearchconsole_pagespeed_analysis.istPagespeedAnalysis", "validation_error", "Invalid strategy. The strategy should be either 'mobile' or 'desktop'.")
 			return nil, nil
 		}
 	}
@@ -224,7 +224,7 @@ func listPagespeedAnalysis(ctx context.Context, d *plugin.QueryData, h *plugin.H
 
 	sitemapURLs, err := sitemapper.Get(smUrl, nil)
 	if err != nil {
-		plugin.Logger(ctx).Error("gsc_pagespeed_analysis.listPagespeedAnalysis", "sitemap_error", err)
+		plugin.Logger(ctx).Error("googlesearchconsole_pagespeed_analysis.listPagespeedAnalysis", "sitemap_error", err)
 		return nil, err
 	}
 
@@ -259,12 +259,12 @@ func getPagespeedAnalysis(ctx context.Context, d *plugin.QueryData, h *plugin.Hy
 	strategy := d.EqualsQualString("strategy")
 
 	if pageUrl == "" {
-		plugin.Logger(ctx).Error("gsc_pagespeed_analysis.getPagespeedAnalysis", "validation_error", "The loc must be specified.")
+		plugin.Logger(ctx).Error("googlesearchconsole_pagespeed_analysis.getPagespeedAnalysis", "validation_error", "The loc must be specified.")
 		return nil, nil
 	}
 	if strategy != "" {
 		if strings.ToLower(strategy) != "mobile" && strings.ToLower(strategy) != "desktop" {
-			plugin.Logger(ctx).Error("gsc_pagespeed_analysis.getPagespeedAnalysis", "validation_error", "Invalid strategy. The strategy should be either 'mobile' or 'desktop'.")
+			plugin.Logger(ctx).Error("googlesearchconsole_pagespeed_analysis.getPagespeedAnalysis", "validation_error", "Invalid strategy. The strategy should be either 'mobile' or 'desktop'.")
 			return nil, nil
 		}
 	}
@@ -274,7 +274,7 @@ func getPagespeedAnalysis(ctx context.Context, d *plugin.QueryData, h *plugin.Hy
 
 	resp, err := getPagespeedAnalysisService(ctx, d, pageUrl, strategy)
 	if err != nil {
-		plugin.Logger(ctx).Error("gsc_pagespeed_analysis.getPagespeedAnalysis", "api_error", err)
+		plugin.Logger(ctx).Error("googlesearchconsole_pagespeed_analysis.getPagespeedAnalysis", "api_error", err)
 		return nil, err
 	}
 

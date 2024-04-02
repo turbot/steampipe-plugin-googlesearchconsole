@@ -1,4 +1,4 @@
-package gsc
+package googlesearchconsole
 
 import (
 	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"

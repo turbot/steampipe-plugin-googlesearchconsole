@@ -1,4 +1,4 @@
-# Table: gsc_indexing_status
+# Table: googlesearchconsole_indexing_status
 
 Results of index status inspection for either the live page or the version in Google's index, depending on whether you requested a live inspection or not
 
@@ -17,7 +17,7 @@ select
   indexing_state,
   referring_urls
 from
-  gsc_indexing_status
+  googlesearchconsole_indexing_status
 where
   sitemap_url = 'https://example.io/sitemap-0.xml' 
   and site_url = 'https://example.io/';
@@ -31,7 +31,7 @@ select
   coverage_state,
   indexing_state
 from
-  gsc_indexing_status
+  googlesearchconsole_indexing_status
 where
   sitemap_url = 'https://example.io/sitemap-0.xml' 
   and site_url = 'https://example.io/'
@@ -45,7 +45,7 @@ select
   coverage_state,
   count(*) as page_count
 from
-  gsc_indexing_status
+  googlesearchconsole_indexing_status
 where
   sitemap_url = 'https://example.io/sitemap-0.xml' 
   and site_url = 'https://example.io/'

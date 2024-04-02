@@ -1,4 +1,4 @@
-# Table: gsc_pagespeed_analysis
+# Table: googlesearchconsole_pagespeed_analysis
 
 Runs PageSpeed analysis on the site, and returns PageSpeed scores, and other information.
 
@@ -22,7 +22,7 @@ select
   fid,
   inp
 from
-  gsc_pagespeed_analysis
+  googlesearchconsole_pagespeed_analysis
 where
   sitemap_url = 'https://example.io/sitemap-0.xml';
 ```
@@ -36,7 +36,7 @@ select
   cls_percentile,
   cls_bucket_range
 from
-  gsc_pagespeed_analysis
+  googlesearchconsole_pagespeed_analysis
 where
   loc = 'https://example.io/';
 ```
@@ -50,7 +50,7 @@ select
   cls_percentile,
   cls_bucket_range
 from
-  gsc_pagespeed_analysis
+  googlesearchconsole_pagespeed_analysis
 where
   loc = 'https://example.io/'
   and strategy = 'MOBILE';
@@ -65,7 +65,7 @@ select
   fcp_percentile,
   fcp_bucket_range
 from
-  gsc_pagespeed_analysis
+  googlesearchconsole_pagespeed_analysis
 where
   loc = 'https://example.io/';
 ```
@@ -79,7 +79,7 @@ select
   fid_percentile,
   fid_bucket_range
 from
-  gsc_pagespeed_analysis
+  googlesearchconsole_pagespeed_analysis
 where
   loc = 'https://example.io/';
 ```

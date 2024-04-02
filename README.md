@@ -1,23 +1,23 @@
-![image](https://hub.steampipe.io/images/plugins/turbot/gsc-social-graphic.png)
+![image](https://hub.steampipe.io/images/plugins/turbot/googlesearchconsole-social-graphic.png)
 
 # Google Search Console Plugin for Steampipe
 
 Use SQL to query data from Google Search Console (GSC).
 
-- **[Get started →](https://hub.steampipe.io/plugins/turbot/gsc)**
-- Documentation: [Table definitions & examples](https://hub.steampipe.io/plugins/turbot/gsc/tables)
+- **[Get started →](https://hub.steampipe.io/plugins/turbot/googlesearchconsole)**
+- Documentation: [Table definitions & examples](https://hub.steampipe.io/plugins/turbot/googlesearchconsole/tables)
 - Community: [Join #steampipe on Slack →](https://turbot.com/community/join)
-- Get involved: [Issues](https://github.com/turbot/steampipe-plugin-gsc/issues)
+- Get involved: [Issues](https://github.com/turbot/steampipe-plugin-googlesearchconsole/issues)
 
 ## Quick start
 
 Install the plugin with [Steampipe](https://steampipe.io):
 
 ```shell
-steampipe plugin install gsc
+steampipe plugin install googlesearchconsole
 ```
 
-Configure your [credentials](https://hub.steampipe.io/plugins/turbot/gsc#credentials) and [config file](https://hub.steampipe.io/plugins/turbot/gsc#configuration).
+Configure your [credentials](https://hub.steampipe.io/plugins/turbot/googlesearchconsole#credentials) and [config file](https://hub.steampipe.io/plugins/turbot/googlesearchconsole#configuration).
 
 Run steampipe:
 
@@ -32,7 +32,7 @@ select
   site_url,
   permission_level
 from
-  gsc_site;
+  googlesearchconsole_site;
 ```
 
 ```
@@ -66,8 +66,8 @@ Prerequisites:
 Clone:
 
 ```sh
-git clone https://github.com/turbot/steampipe-plugin-gsc.git
-cd steampipe-plugin-gsc
+git clone https://github.com/turbot/steampipe-plugin-googlesearchconsole.git
+cd steampipe-plugin-googlesearchconsole
 ```
 
 Build, which automatically installs the new version to your `~/.steampipe/plugins` directory:
@@ -80,14 +80,14 @@ Configure the plugin:
 
 ```sh
 cp config/* ~/.steampipe/config
-vi ~/.steampipe/config/gsc.spc
+vi ~/.steampipe/config/googlesearchconsole.spc
 ```
 
 Try it!
 
 ```shell
 steampipe query
-> .inspect gsc
+> .inspect googlesearchconsole
 ```
 
 Further reading:
@@ -108,4 +108,4 @@ This repository is published under the [Apache 2.0](https://www.apache.org/licen
 Want to help but don't know where to start? Pick up one of the `help wanted` issues:
 
 - [Steampipe](https://github.com/turbot/steampipe/labels/help%20wanted)
-- [Google Search Console Plugin](https://github.com/turbot/steampipe-plugin-gsc/labels/help%20wanted)
+- [Google Search Console Plugin](https://github.com/turbot/steampipe-plugin-googlesearchconsole/labels/help%20wanted)

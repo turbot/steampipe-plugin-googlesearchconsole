@@ -1,4 +1,4 @@
-package gsc
+package googlesearchconsole
 
 import (
 	"context"
@@ -14,7 +14,7 @@ import (
 
 func tableGSCPagespeedAnalysisAggregated(_ context.Context) *plugin.Table {
 	return &plugin.Table{
-		Name:        "gsc_pagespeed_analysis_aggregated",
+		Name:        "googlesearchconsole_pagespeed_analysis_aggregated",
 		Description: "Lists the aggregated pagespeed analysis for the URLs in the sitemap.",
 		List: &plugin.ListConfig{
 			KeyColumns: []*plugin.KeyColumn{
@@ -183,12 +183,12 @@ func listPagespeedAnalysisAggregated(ctx context.Context, d *plugin.QueryData, h
 	strategy := d.EqualsQualString("strategy")
 
 	if siteUrl == "" {
-		plugin.Logger(ctx).Error("gsc_pagespeed_analysis_aggregated.listPagespeedAnalysisAggregated", "validation_error", "site_url must be provided")
+		plugin.Logger(ctx).Error("googlesearchconsole_pagespeed_analysis_aggregated.listPagespeedAnalysisAggregated", "validation_error", "site_url must be provided")
 		return nil, nil
 	}
 	if strategy != "" {
 		if strings.ToLower(strategy) != "mobile" && strings.ToLower(strategy) != "desktop" {
-			plugin.Logger(ctx).Error("gsc_pagespeed_analysis_aggregated.listPagespeedAnalysisAggregated", "validation_error", "Invalid strategy. The strategy should be either 'mobile' or 'desktop'.")
+			plugin.Logger(ctx).Error("googlesearchconsole_pagespeed_analysis_aggregated.listPagespeedAnalysisAggregated", "validation_error", "Invalid strategy. The strategy should be either 'mobile' or 'desktop'.")
 			return nil, nil
 		}
 	}
@@ -199,14 +199,14 @@ func listPagespeedAnalysisAggregated(ctx context.Context, d *plugin.QueryData, h
 	// Create client
 	opts, err := getPagespeedSessionConfig(ctx, d)
 	if err != nil {
-		plugin.Logger(ctx).Error("gsc_pagespeed_analysis_aggregated.listPagespeedAnalysisAggregated", "connection_error", err)
+		plugin.Logger(ctx).Error("googlesearchconsole_pagespeed_analysis_aggregated.listPagespeedAnalysisAggregated", "connection_error", err)
 		return nil, err
 	}
 
 	// Create service
 	svc, err := pagespeedonline.NewService(ctx, opts...)
 	if err != nil {
-		plugin.Logger(ctx).Error("gsc_pagespeed_analysis_aggregated.listPagespeedAnalysisAggregated", "service_creation_error", err)
+		plugin.Logger(ctx).Error("googlesearchconsole_pagespeed_analysis_aggregated.listPagespeedAnalysisAggregated", "service_creation_error", err)
 		return nil, err
 	}
 
@@ -217,7 +217,7 @@ func listPagespeedAnalysisAggregated(ctx context.Context, d *plugin.QueryData, h
 
 	resp, err := req.Context(ctx).Do()
 	if err != nil {
-		plugin.Logger(ctx).Error("gsc_pagespeed_analysis_aggregated.listPagespeedAnalysisAggregated", "api_error", err)
+		plugin.Logger(ctx).Error("googlesearchconsole_pagespeed_analysis_aggregated.listPagespeedAnalysisAggregated", "api_error", err)
 		return nil, err
 	}
 

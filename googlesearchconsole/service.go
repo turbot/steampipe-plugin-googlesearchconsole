@@ -1,4 +1,4 @@
-package gsc
+package googlesearchconsole
 
 import (
 	"context"
@@ -43,7 +43,7 @@ func getSearchConsoleSessionConfig(ctx context.Context, d *plugin.QueryData) ([]
 // getSearchConsoleTokenSource returns the token source for the searchconsole service
 func getSearchConsoleTokenSource(ctx context.Context, d *plugin.QueryData) (oauth2.TokenSource, error) {
 
-	cacheKey := "gsc.token_source"
+	cacheKey := "googlesearchconsole.token_source"
 	if ts, ok := d.ConnectionCache.Get(ctx, cacheKey); ok {
 		return ts.(oauth2.TokenSource), nil
 	}

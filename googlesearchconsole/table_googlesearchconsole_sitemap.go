@@ -1,4 +1,4 @@
-package gsc
+package googlesearchconsole
 
 import (
 	"context"
@@ -14,7 +14,7 @@ import (
 
 func tableGSCSitemap(_ context.Context) *plugin.Table {
 	return &plugin.Table{
-		Name:        "gsc_sitemap",
+		Name:        "googlesearchconsole_sitemap",
 		Description: "Lists the sitemaps-entries submitted for sites, or included in the sitemap index file.",
 		List: &plugin.ListConfig{
 			KeyColumns:    plugin.OptionalColumns([]string{"site_url"}),
@@ -108,14 +108,14 @@ func listSitemaps(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateDat
 	// Create client
 	opts, err := getSearchConsoleSessionConfig(ctx, d)
 	if err != nil {
-		plugin.Logger(ctx).Error("gsc_sitemap.listSitemaps", "connection_error", err)
+		plugin.Logger(ctx).Error("googlesearchconsole_sitemap.listSitemaps", "connection_error", err)
 		return nil, err
 	}
 
 	// Create service
 	svc, err := searchconsole.NewService(ctx, opts...)
 	if err != nil {
-		plugin.Logger(ctx).Error("gsc_sitemap.listSitemaps", "service_creation_error", err)
+		plugin.Logger(ctx).Error("googlesearchconsole_sitemap.listSitemaps", "service_creation_error", err)
 		return nil, err
 	}
 
@@ -123,7 +123,7 @@ func listSitemaps(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateDat
 
 	resp, err := req.Context(ctx).Do()
 	if err != nil {
-		plugin.Logger(ctx).Error("gsc_sitemap.listSitemaps", "api_error", err)
+		plugin.Logger(ctx).Error("googlesearchconsole_sitemap.listSitemaps", "api_error", err)
 		return nil, err
 	}
 
