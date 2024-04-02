@@ -38,7 +38,7 @@ where
   and coverage_state <> 'Submitted and indexed';
 ```
 
-### List overall status of the pages
+### Get page count by status
 
 ```sql
 select
