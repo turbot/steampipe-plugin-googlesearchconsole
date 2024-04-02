@@ -15,7 +15,7 @@ select
   overall_loading_experience,
   analysis_utc_timestamp,
   cls,
-  ttf,
+  ttfb,
   fcp,
   lcp,
   fid,
