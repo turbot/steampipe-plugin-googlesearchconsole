@@ -25,8 +25,9 @@ func tableGSCPagespeedAnalysis(_ context.Context) *plugin.Table {
 					Require: plugin.Required,
 				},
 				{
-					Name:    "strategy",
-					Require: plugin.Optional,
+					Name:       "strategy",
+					Require:    plugin.Optional,
+					CacheMatch: "exact",
 				},
 			},
 			Hydrate: listPagespeedAnalysis,
@@ -60,7 +61,6 @@ func getPagespeedAnalysisColumns() []*plugin.Column {
 			Name:        "strategy",
 			Description: "The analysis strategy (desktop or mobile) to use. Default is desktop.",
 			Type:        proto.ColumnType_STRING,
-			Transform:   transform.FromQual("strategy"),
 		},
 		{
 			Name:        "id",

@@ -23,8 +23,9 @@ func tableGSCPagespeedAnalysisAggregated(_ context.Context) *plugin.Table {
 					Require: plugin.Required,
 				},
 				{
-					Name:    "strategy",
-					Require: plugin.Optional,
+					Name:       "strategy",
+					Require:    plugin.Optional,
+					CacheMatch: "exact",
 				},
 			},
 			Hydrate: listPagespeedAnalysisAggregated,
@@ -45,7 +46,6 @@ func getPagespeedAnalysisAggregatedColumns() []*plugin.Column {
 			Name:        "strategy",
 			Description: "The analysis strategy (desktop or mobile) to use. Default is desktop.",
 			Type:        proto.ColumnType_STRING,
-			Transform:   transform.FromQual("strategy"),
 		},
 		{
 			Name:        "id",
@@ -222,7 +222,9 @@ func listPagespeedAnalysisAggregated(ctx context.Context, d *plugin.QueryData, h
 	}
 
 	status := AnalysisPerURL{
+		Loc:                 siteUrl,
 		UrlInspectionResult: resp,
+		Strategy:            strategy,
 	}
 	d.StreamListItem(ctx, status)
 
