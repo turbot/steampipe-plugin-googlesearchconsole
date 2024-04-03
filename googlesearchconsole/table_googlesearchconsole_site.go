@@ -11,7 +11,7 @@ import (
 
 //// TABLE DEFINITION
 
-func tableGSCSite(_ context.Context) *plugin.Table {
+func tableGoogleSearchConsoleSite(_ context.Context) *plugin.Table {
 	return &plugin.Table{
 		Name:        "googlesearchconsole_site",
 		Description: "Lists the user's Search Console sites.",

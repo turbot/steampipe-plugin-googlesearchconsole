@@ -12,7 +12,7 @@ import (
 
 //// TABLE DEFINITION
 
-func tableGSCSitemap(_ context.Context) *plugin.Table {
+func tableGoogleSearchConsoleSitemap(_ context.Context) *plugin.Table {
 	return &plugin.Table{
 		Name:        "googlesearchconsole_sitemap",
 		Description: "Lists the sitemaps-entries submitted for sites, or included in the sitemap index file.",

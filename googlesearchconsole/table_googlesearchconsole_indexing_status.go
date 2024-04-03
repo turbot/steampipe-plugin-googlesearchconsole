@@ -13,13 +13,13 @@ import (
 
 //// TABLE DEFINITION
 
-func tableGSCIndexingStatus(_ context.Context) *plugin.Table {
+func tableGoogleSearchConsoleIndexingStatus(_ context.Context) *plugin.Table {
 	return &plugin.Table{
 		Name:        "googlesearchconsole_indexing_status",
 		Description: "Lists the indexing status of the URLs in the sitemap.",
 		List: &plugin.ListConfig{
 			KeyColumns: plugin.AllColumns([]string{"site_url", "sitemap_url"}),
-			Hydrate:    listIndexingStatus,
+			Hydrate:    listIndexingStatuses,
 		},
 		Get: &plugin.GetConfig{
 			KeyColumns: plugin.AllColumns([]string{"site_url", "loc"}),
@@ -123,7 +123,7 @@ type StatusPerURL struct {
 
 //// LIST FUNCTION
 
-func listIndexingStatus(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
+func listIndexingStatuses(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) (interface{}, error) {
 	siteUrl := d.EqualsQualString("site_url")
 	smUrl := d.EqualsQualString("sitemap_url")
 
@@ -134,7 +134,7 @@ func listIndexingStatus(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydr
 
 	sitemapURLs, err := sitemapper.Get(smUrl, nil)
 	if err != nil {
-		plugin.Logger(ctx).Error("googlesearchconsole_indexing_status.listIndexingStatus", "sitemap_error", err)
+		plugin.Logger(ctx).Error("googlesearchconsole_indexing_status.listIndexingStatuses", "sitemap_error", err)
 		return nil, err
 	}
 

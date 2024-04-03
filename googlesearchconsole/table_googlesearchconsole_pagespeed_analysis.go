@@ -14,7 +14,7 @@ import (
 
 //// TABLE DEFINITION
 
-func tableGSCPagespeedAnalysis(_ context.Context) *plugin.Table {
+func tableGoogleSearchConsolePagespeedAnalysis(_ context.Context) *plugin.Table {
 	return &plugin.Table{
 		Name:        "googlesearchconsole_pagespeed_analysis",
 		Description: "Lists the pagespeed analysis for the URLs in the sitemap.",
@@ -30,7 +30,7 @@ func tableGSCPagespeedAnalysis(_ context.Context) *plugin.Table {
 					CacheMatch: "exact",
 				},
 			},
-			Hydrate: listPagespeedAnalysis,
+			Hydrate: listPagespeedAnalyses,
 		},
 		Get: &plugin.GetConfig{
 			KeyColumns: []*plugin.KeyColumn{
@@ -204,12 +204,12 @@ type AnalysisPerURL struct {
 
 //// LIST FUNCTION
 
-func listPagespeedAnalysis(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
+func listPagespeedAnalyses(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
 	smUrl := d.EqualsQualString("sitemap_url")
 	strategy := d.EqualsQualString("strategy")
 
 	if smUrl == "" {
-		plugin.Logger(ctx).Error("googlesearchconsole_pagespeed_analysis.listPagespeedAnalysis", "validation_error", "The sitemap_url must be specified.")
+		plugin.Logger(ctx).Error("googlesearchconsole_pagespeed_analysis.listPagespeedAnalyses", "validation_error", "The sitemap_url must be specified.")
 		return nil, nil
 	}
 	if strategy != "" {
@@ -224,7 +224,7 @@ func listPagespeedAnalysis(ctx context.Context, d *plugin.QueryData, h *plugin.H
 
 	sitemapURLs, err := sitemapper.Get(smUrl, nil)
 	if err != nil {
-		plugin.Logger(ctx).Error("googlesearchconsole_pagespeed_analysis.listPagespeedAnalysis", "sitemap_error", err)
+		plugin.Logger(ctx).Error("googlesearchconsole_pagespeed_analysis.listPagespeedAnalyses", "sitemap_error", err)
 		return nil, err
 	}
 

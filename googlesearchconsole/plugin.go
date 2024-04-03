@@ -16,11 +16,11 @@ func Plugin(ctx context.Context) *plugin.Plugin {
 			Schema:      ConfigSchema,
 		},
 		TableMap: map[string]*plugin.Table{
-			"googlesearchconsole_indexing_status":               tableGSCIndexingStatus(ctx),
-			"googlesearchconsole_pagespeed_analysis":            tableGSCPagespeedAnalysis(ctx),
-			"googlesearchconsole_pagespeed_analysis_aggregated": tableGSCPagespeedAnalysisAggregated(ctx),
-			"googlesearchconsole_site":                          tableGSCSite(ctx),
-			"googlesearchconsole_sitemap":                       tableGSCSitemap(ctx),
+			"googlesearchconsole_indexing_status":               tableGoogleSearchConsoleIndexingStatus(ctx),
+			"googlesearchconsole_pagespeed_analysis":            tableGoogleSearchConsolePagespeedAnalysis(ctx),
+			"googlesearchconsole_pagespeed_analysis_aggregated": tableGoogleSearchConsolePagespeedAnalysisAggregated(ctx),
+			"googlesearchconsole_site":                          tableGoogleSearchConsoleSite(ctx),
+			"googlesearchconsole_sitemap":                       tableGoogleSearchConsoleSitemap(ctx),
 		},
 	}
 	return p
