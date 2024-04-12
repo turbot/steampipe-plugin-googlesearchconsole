@@ -1,6 +1,6 @@
 ---
 organization: Turbot
-category: ["saas"]
+category: ["website monitoring"]
 icon_url: "/images/plugins/turbot/googlesearchconsole.svg"
 brand_color: "#ea4335"
 display_name: "Google Search Console"

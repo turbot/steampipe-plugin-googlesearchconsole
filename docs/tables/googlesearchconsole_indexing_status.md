@@ -11,9 +11,10 @@ Results of index status inspection for either the live page or the version in Go
 
 The `googlesearchconsole_indexing_status` table allows users to analyze the index status of pages on their site, including details on coverage state, indexing state, and referring URLs. It's essential for understanding how well your web pages are represented in Google Search.
 
-**Required fields:**
-  - `site_url`: The URL of the property as defined in Search Console. **Examples:** `http://www.example.com/` for a URL-prefix property, or `sc-domain:example.com` for a Domain property
-  - `sitemap_url`: The URL of the sitemap that was submitted to Google Search Console. **Example:** `https://www.example.com/sitemap.xml`
+**Important Notes**
+You must specify the following columns in `where` or `join` clause to query the table:
+- `site_url`: The URL of the property as defined in Search Console. **Examples:** `http://www.example.com/` for a URL-prefix property, or `sc-domain:example.com` for a Domain property
+- `sitemap_url`: The URL of the sitemap that was submitted to Google Search Console. **Example:** `https://www.example.com/sitemap.xml`
 
 ## Examples
 
