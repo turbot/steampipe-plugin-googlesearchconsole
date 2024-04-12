@@ -11,8 +11,9 @@ PageSpeed Insights (PSI) reports on the user experience of a page on both mobile
 
 The `googlesearchconsole_pagespeed_analysis` table allows users to analyze PageSpeed metrics for each page on their site, and compare the performance of pages across different devices.
 
-**Required fields:**
-  - `sitemap_url`: The URL of the sitemap that was submitted to Google Search Console. **Example:** `https://www.example.com/sitemap.xml`
+**Important Notes**
+You must specify the following columns in `where` or `join` clause to query the table:
+- `sitemap_url`: The URL of the sitemap that was submitted to Google Search Console. **Example:** `https://www.example.com/sitemap.xml`
 
 ## Examples
 

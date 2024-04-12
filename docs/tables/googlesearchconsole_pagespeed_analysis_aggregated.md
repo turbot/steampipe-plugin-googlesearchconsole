@@ -11,8 +11,9 @@ PageSpeed Insights (PSI) reports on the user experience of a page on both mobile
 
 The `googlesearchconsole_pagespeed_analysis_aggregated` table runs PageSpeed analysis on the site, and returns aggregated PageSpeed scores.
 
-**Required fields:**
-  - `site_url`: The URL of the property as defined in Search Console. **Examples:** `http://www.example.com/` for a URL-prefix property, or `sc-domain:example.com` for a Domain property
+**Important Notes**
+You must specify the following column in `where` or `join` clause to query the table:
+- `site_url`: The URL of the property as defined in Search Console. **Examples:** `http://www.example.com/` for a URL-prefix property, or `sc-domain:example.com` for a Domain property
 
 ## Examples
 
