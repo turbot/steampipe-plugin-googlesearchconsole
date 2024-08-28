@@ -1,12 +1,12 @@
 module github.com/turbot/steampipe-plugin-googlesearchconsole
 
-go 1.21.0
+go 1.22.4
 
-toolchain go1.21.4
+toolchain go1.22.6
 
 require (
 	github.com/mitchellh/go-homedir v1.1.0
-	github.com/turbot/steampipe-plugin-sdk/v5 v5.10.1
+	github.com/turbot/steampipe-plugin-sdk/v5 v5.10.3
 	github.com/yterajima/go-sitemap v0.3.1
 	golang.org/x/oauth2 v0.18.0
 	google.golang.org/api v0.172.0
