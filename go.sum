@@ -558,8 +558,8 @@ github.com/turbot/steampipe-plugin-sdk/v5 v5.10.4 h1:h2Ye0ksL6KN6w2wh1O3mgKthLny
 github.com/turbot/steampipe-plugin-sdk/v5 v5.10.4/go.mod h1:FzW+0aq4x1PoCkklCRx43dMrhxk7SYeWVHUb3pNFtFc=
 github.com/ulikunitz/xz v0.5.10 h1:t92gobL9l3HE202wg3rlk19F6X+JOxl9BBrCCMYEYd8=
 github.com/ulikunitz/xz v0.5.10/go.mod h1:nbz6k7qbPmH4IRqmfOplQw/tblSgqTqBwxkY0oWt/14=
-github.com/yterajima/go-sitemap v0.3.1 h1:OE9perjuW/waioH8r39WkTR5wOwRstfGd4JtxhwddGU=
-github.com/yterajima/go-sitemap v0.3.1/go.mod h1:CRU0eiLdQIFhxLoTQRgXlsPMNbENABe7h/l5+NGFNFw=
+github.com/yterajima/go-sitemap v0.4.0 h1:JVgmfq4ch/XXIfKjSNlGqZudlPTBagNUgE6B9uBurm4=
+github.com/yterajima/go-sitemap v0.4.0/go.mod h1:CRU0eiLdQIFhxLoTQRgXlsPMNbENABe7h/l5+NGFNFw=
 github.com/yuin/goldmark v1.1.25/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.27/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.32/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
