@@ -8,7 +8,7 @@ require (
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/turbot/steampipe-plugin-sdk/v5 v5.11.5
 	github.com/yterajima/go-sitemap v0.3.1
-	golang.org/x/oauth2 v0.21.0
+	golang.org/x/oauth2 v0.29.0
 	google.golang.org/api v0.172.0
 )
 
