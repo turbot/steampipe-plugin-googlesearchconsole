@@ -9,8 +9,8 @@ import (
 	"sync"
 
 	"github.com/mitchellh/go-homedir"
-	"github.com/turbot/steampipe-plugin-sdk/v5/memoize"
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v6/memoize"
+	"github.com/turbot/steampipe-plugin-sdk/v6/plugin"
 	sitemapper "github.com/yterajima/go-sitemap"
 	"google.golang.org/api/pagespeedonline/v5"
 	"google.golang.org/api/searchconsole/v1"
@@ -149,7 +149,7 @@ func getProjectUncached(ctx context.Context, d *plugin.QueryData, h *plugin.Hydr
 	if err != nil {
 		return nil, fmt.Errorf("getProjectId, failed to open JSON file: %s", err)
 	}
-	defer jsonFile.Close()
+	defer func() { _ = jsonFile.Close() }()
 
 	// Read the JSON file content
 	byteValue, err := io.ReadAll(jsonFile)
