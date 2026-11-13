@@ -11,7 +11,7 @@ import (
 	"google.golang.org/api/pagespeedonline/v5"
 	"google.golang.org/api/searchconsole/v1"
 
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v6/plugin"
 )
 
 // getSearchConsoleSessionConfig returns the client options for the searchconsole service
